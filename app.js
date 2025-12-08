@@ -3,6 +3,11 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const Listing = require('./Models/listing')
+const path = require('path');
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 const MONGO_URL = 'mongodb://localhost:27017/wanderlust';
@@ -19,6 +24,7 @@ app.get('/', (req, res) => {
 });
 app.get('/listings', async(req, res)=>{
 const allListings = await Listing.find({});
+res.render('index.ejs', {allListings});
 
 });
 
