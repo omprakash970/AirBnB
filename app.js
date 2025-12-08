@@ -17,10 +17,11 @@ main().then(() => {
 app.get('/', (req, res) => {
   res.send('Hello I am root');
 });
-app.get('testListing',async (req, res)=>{
+app.get('/testListing',async (req, res)=>{
   let sampleListing = new Listing({
     title:"My New Villa", 
     description:"A beautiful villa with sea view",
+    image:"https://example.com/default.jpg",
     price:500000,
     location:"Goa", 
     Country:"India"
