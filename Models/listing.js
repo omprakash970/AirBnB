@@ -9,9 +9,12 @@ const listingSchema = new Schema({
         type: String, 
         required: true
     },
-    imagine: {
+    image: {
         type: String, 
-        required: true
+        required: true,
+        set: function(v) {
+            return v === "" ? "default link" : v;
+        }
     },
     price: {
         type: Number,
