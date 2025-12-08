@@ -8,8 +8,12 @@
 <body>
     <h3>All Listings</h3>
 
-
-
-    
+    <ul>
+        <% listings.forEach(function(listing) { %>
+            <li>
+                <a href="/listings/<%= listing.id %>"><%= listing.title %></a>
+            </li>
+        <% }); %>   
+    </ul>
 </body>
 </html>

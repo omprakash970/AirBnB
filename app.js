@@ -23,9 +23,8 @@ app.get('/', (req, res) => {
   res.send('Hello I am root');
 });
 app.get('/listings', async(req, res)=>{
-const allListings = await Listing.find({});
-res.render("listings/index.ejs", {allListings});
-
+  const allListings = await Listing.find({});
+  res.render("listings/index", { listings: allListings });
 });
 
 
