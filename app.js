@@ -33,6 +33,9 @@ app.get('/listings/:id', async(req, res)=>{
   const listing= await Listing.findById(id); 
   res.render("listings/show", { listing }); 
 })
+app.get('/listings/new', (req, res)=>{
+  
+})
 
 // app.get('/testListing',async (req, res)=>{
 //   let sampleListing = new Listing({
