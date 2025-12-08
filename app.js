@@ -26,7 +26,13 @@ app.get('/listings', async(req, res)=>{
   const allListings = await Listing.find({});
   res.render("listings/index", { listings: allListings });
 });
-
+app.use(express.urlencoded({ extended: true }));
+//show route: 
+app.get('/listings/:id', async(req, res)=>{
+  const {id} = req.params;
+  const listing= await Listing.findById(id); 
+  res.render("listings/show", { listing }); 
+})
 
 // app.get('/testListing',async (req, res)=>{
 //   let sampleListing = new Listing({
