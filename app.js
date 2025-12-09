@@ -28,13 +28,15 @@ app.get('/listings', async(req, res)=>{
 });
 app.use(express.urlencoded({ extended: true }));
 //show route: 
+app.get('/listings/new', (req, res)=>{
+  res.render("listings/new.ejs");
+  
+
+})
 app.get('/listings/:id', async(req, res)=>{
   const {id} = req.params;
   const listing= await Listing.findById(id); 
   res.render("listings/show", { listing }); 
-})
-app.get('/listings/new', (req, res)=>{
-  
 })
 
 // app.get('/testListing',async (req, res)=>{
