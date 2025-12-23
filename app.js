@@ -1,12 +1,21 @@
-const express = require('express'); 
+// const express = require('express'); 
+// const app = express();
+// const port = 3000;
+// const mongoose = require('mongoose');
+// const Listing = require('./Models/listing')
+// const path = require('path');
+// app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.use(express.static(path.join(__dirname, 'public')));
+const express = require('express');
 const app = express();
-const port = 3000;
-const mongoose = require('mongoose');
-const Listing = require('./Models/listing')
+const port =3000; 
+const mongoose=require('mongoose');
+const Listing=require('./Models/listing'); 
 const path = require('path');
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views')); 
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 
 
