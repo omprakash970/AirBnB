@@ -11,6 +11,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const Listing = require('./Models/listing');
+const methodOverride = require('method-override');
 
 const app = express();
 const port = 3000;
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 
 const MONGO_URL = 'mongodb://localhost:27017/wanderlust';
@@ -49,6 +51,16 @@ app.get('/listings/:id', async (req, res) => {
   res.render('listings/show', { listing });
 });
 
+// Edit form
+app.get('/listings/:id/edit', async (req, res) => {
+  const { id } = req.params;
+  const listing = await Listing.findById(id);
+  if (!listing) {
+    return res.status(404).send('Listing not found');
+  }
+  res.render('listings/edit', { listing });
+});
+
 app.post('/listings', async (req, res) => {
   const { title, description, price, location, country } = req.body;
   const newListing = new Listing({
@@ -61,6 +73,25 @@ app.post('/listings', async (req, res) => {
   });
   await newListing.save();
   res.redirect(`/listings/${newListing._id}`);
+});
+
+// Update listing
+app.put('/listings/:id', async (req, res) => {
+  const { id } = req.params;
+  const { title, description, price, location, country, image } = req.body;
+  const update = {
+    title,
+    description,
+    image: image || "",
+    price,
+    location,
+    Country: country,
+  };
+  const listing = await Listing.findByIdAndUpdate(id, update, { runValidators: true, new: true });
+  if (!listing) {
+    return res.status(404).send('Listing not found');
+  }
+  res.redirect(`/listings/${listing._id}`);
 });
 
 // app.get('/testListing',async (req, res)=>{

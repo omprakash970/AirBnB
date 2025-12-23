@@ -18,6 +18,8 @@
         <% for(listing of listings){ %>
             <li>
                 <a href="/listings/<%= listing._id %>"><%= listing.title %></a>
+                &nbsp;|
+                <a href="/listings/<%= listing._id %>/edit">Edit</a>
             </li>
         <% } %>
     </ul>
