@@ -349,4 +349,13 @@ const sampleListings = [
   },
 ];
 
-module.exports = { data: sampleListings };
+const normalizedListings = sampleListings.map(item => ({
+  title: item.title,
+  description: item.description,
+  image: typeof item.image === 'string' ? item.image : (item.image && item.image.url) || "",
+  price: item.price,
+  location: item.location,
+  Country: item.Country || item.country
+}));
+
+module.exports = { data: normalizedListings };

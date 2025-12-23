@@ -62,6 +62,7 @@ app.get('/listings/:id', async(req, res)=>{
 //   res.send("Sample listing created");
 
 // })
+ 
 app.listen(port, () => {
   console.log(`Listening to http://localhost:${port}`);
 });
