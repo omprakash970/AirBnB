@@ -6,3 +6,9 @@ main()
 .then(()=>{
     console.log("Connected to MongoDb"); 
 })
+.catch((err)=>{
+    console.log("Error connecting to MongoDB:", err);
+})
+async function main(){
+    await mongoose.connect(MONGO_URL);
+}
