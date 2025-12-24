@@ -1,18 +1,17 @@
-<%layout("/Layouts/boilerplate") %>
-
-<body>
-<form method="GET" action="listings/new" >
+<form method="GET" action="/listings/new">
     <button>Create New Listing</button>
 </form>
-    <h3>All Listings</h3>
-    <ul>
-        <% for(listing of listings){ %>
-            <li>
-                <a href="/listings/<%= listing._id %>"><%= listing.title %></a>
-                &nbsp;|
-                <a href="/listings/<%= listing._id %>/edit">Edit</a>
-            </li>
-        <% } %>
-    </ul>
-</body>
-</html>
+
+<h3>All Listings</h3>
+<ul>
+    <% for (listing of listings) { %>
+        <li>
+            <a href="/listings/<%= listing._id %>"><%= listing.title %></a>
+            &nbsp;|
+            <a href="/listings/<%= listing._id %>/edit">Edit</a>
+        </li>
+    <% } %>
+    <% if (!listings || listings.length === 0) { %>
+        <li>No listings yet</li>
+    <% } %>
+</ul>
