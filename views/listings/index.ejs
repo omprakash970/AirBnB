@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WanderLust</title>
-</head>
+<%layout("/Layouts/boilerplate") %>
+
 <body>
 <form method="GET" action="listings/new" >
     <button>Create New Listing</button>
 </form>
-
-
-
     <h3>All Listings</h3>
-
     <ul>
         <% for(listing of listings){ %>
             <li>
