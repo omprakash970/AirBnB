@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(expressLayouts);
 app.set('layout', 'Layouts/boilerplate');
-
+app.use(express.static(path.join(__dirname, "/public"))); 
 
 const MONGO_URL = 'mongodb://localhost:27017/wanderlust';
 async function main() {
@@ -43,7 +43,7 @@ app.get('/listings', async (req, res) => {
 });
 //show route: 
 app.get('/listings/new', (req, res) => {
-  res.render('listings/new.ejs');
+  res.render('listings/new');
 });
 app.get('/listings/:id', async (req, res) => {
   const { id } = req.params;

@@ -4,7 +4,7 @@
 
 <h3>All Listings</h3>
 <ul>
-    <% for (listing of listings) { %>
+    <% for (let listing of listings) { %>
         <li>
             <a href="/listings/<%= listing._id %>"><%= listing.title %></a>
             &nbsp;|
