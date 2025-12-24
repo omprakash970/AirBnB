@@ -1,3 +1,9 @@
-*{
-    background-color: aqua;
+/* Keep background only on the page, not every element */
+body {
+    background-color: #f8f9fa; /* light gray; change if you want */
+}
+
+/* Optional: ensure container uses transparent background (inherits body) */
+.container {
+    background-color: transparent;
 }
